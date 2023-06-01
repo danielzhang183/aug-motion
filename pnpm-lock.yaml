@@ -44,14 +44,7 @@ importers:
         specifier: ^0.23.4
         version: 0.23.4
 
-  playground:
-    devDependencies:
-      typescript:
-        specifier: ^5.0.2
-        version: registry.npmmirror.com/typescript@5.0.2
-      vite:
-        specifier: ^4.3.9
-        version: registry.npmmirror.com/vite@4.3.9(@types/node@18.16.16)
+  playground: {}
 
 packages:
   /@ampproject/remapping@2.2.0:
