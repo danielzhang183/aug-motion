@@ -1,14 +1,14 @@
 {
-  "name": "pkg-name",
+  "name": "aug-motion",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.5.0",
   "description": "Node starter template with using ts",
   "author": "Daniel Zhang",
   "license": "MIT",
-  "homepage": "https://github.com/danielzhang183/pkg-name#readme",
-  "repository": "danielzhang183/pkg-name",
-  "bugs": "https://github.com/danielzhang183/pkg-name/issues",
+  "homepage": "https://github.com/danielzhang183/aug-motion#readme",
+  "repository": "danielzhang183/aug-motion",
+  "bugs": "https://github.com/danielzhang183/aug-motion/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
@@ -34,6 +34,7 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "build:play": "pnpm -C playground build",
     "dev": "unbuild --stub",
     "play": "vite playground",
     "lint": "eslint .",
