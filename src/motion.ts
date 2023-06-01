@@ -2,35 +2,35 @@
 import type { MotionData, OrientationData } from './types'
 
 export class Motion {
-  motions: MotionData[] = []
-  orientations: OrientationData[] = []
+  motionInfo: MotionData | undefined
+  orientationInfo: OrientationData | undefined
 
   constructor() {
     this.clear()
-    this.requestPermissions().then(() => {
-      window.addEventListener('deviceorientation', this.handleOrientation, true)
-      window.addEventListener('devicemotion', this.handleMotion, true)
-    })
+    window.addEventListener('deviceorientation', this.handleOrientation, true)
+    window.addEventListener('devicemotion', this.handleMotion, true)
+    // this.requestPermissions().then(() => {
+    // })
   }
 
   handleMotion(event: DeviceMotionEvent) {
-    this.motions.push({
+    this.motionInfo = {
       acceleration: event.acceleration,
       accelerationIncludingGravity: event.acceleration,
       rotationRate: event.rotationRate,
       interval: event.interval,
       timeStamp: event.timeStamp,
-    })
+    }
   }
 
   handleOrientation(event: DeviceOrientationEvent) {
-    this.orientations.push({
+    this.orientationInfo = {
       absolute: event.absolute,
       alpha: event.alpha,
       beta: event.beta,
       gamma: event.gamma,
       timeStamp: event.timeStamp,
-    })
+    }
   }
 
   async requestPermissions() {
@@ -55,8 +55,8 @@ export class Motion {
   }
 
   clear() {
-    this.motions.length = 0
-    this.orientations.length = 0
+    this.motionInfo = undefined
+    this.orientationInfo = undefined
   }
 
   remove() {
