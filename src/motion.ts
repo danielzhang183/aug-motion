@@ -7,7 +7,6 @@ export class Motion {
 
   constructor() {
     this.clear()
-    this.requestPermissions()
     window.addEventListener('deviceorientation', this.handleOrientation, true)
     window.addEventListener('devicemotion', this.handleMotion, true)
   }
