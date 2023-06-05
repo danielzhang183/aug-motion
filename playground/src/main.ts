@@ -1,19 +1,32 @@
 import './style.css'
 
-const motionDiv = document.querySelector<HTMLDivElement>('#motion')!
-const orientationDiv = document.querySelector<HTMLDivElement>('#orientation')!
+const motionDiv = document.querySelector<HTMLPreElement>('#motion')!
+const orientationDiv = document.querySelector<HTMLPreElement>('#orientation')!
 const btn = document.querySelector<HTMLButtonElement>('#btn')!
 
 let motionInfo = {}
 let orientationInfo = {}
 
-window.addEventListener('deviceorientation', handleOrientation, true)
 window.addEventListener('devicemotion', handleMotion, true)
+window.addEventListener('deviceorientation', handleOrientation, true)
+
 function handleMotion(event: DeviceMotionEvent) {
   motionInfo = {
-    acceleration: event.acceleration,
-    accelerationIncludingGravity: event.acceleration,
-    rotationRate: event.rotationRate,
+    acceleration: {
+      x: event.acceleration?.x,
+      y: event.acceleration?.y,
+      z: event.acceleration?.z,
+    },
+    accelerationIncludingGravity: {
+      x: event.accelerationIncludingGravity?.x,
+      y: event.accelerationIncludingGravity?.y,
+      z: event.accelerationIncludingGravity?.z,
+    },
+    rotationRate: {
+      alpha: event.rotationRate?.alpha,
+      beta: event.rotationRate?.beta,
+      gamma: event.rotationRate?.gamma,
+    },
     interval: event.interval,
     timeStamp: event.timeStamp,
   }
