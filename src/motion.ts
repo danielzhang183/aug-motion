@@ -19,6 +19,7 @@ export class Motion {
       interval: event.interval,
       timeStamp: event.timeStamp,
     }
+    console.log({ motionInfo: this.motionInfo })
   }
 
   handleOrientation(event: DeviceOrientationEvent) {
@@ -29,11 +30,14 @@ export class Motion {
       gamma: event.gamma,
       timeStamp: event.timeStamp,
     }
+    console.log({ orientationInfo: this.orientationInfo })
   }
 
   async requestPermissions() {
-    if (typeof DeviceMotionEvent === 'undefined' || typeof DeviceOrientationEvent === 'undefined')
+    if (typeof DeviceMotionEvent === 'undefined' || typeof DeviceOrientationEvent === 'undefined') {
       alert('Not supported 🥺')
+      return
+    }
 
     // @ts-expect-error okay
     if (DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function') {
